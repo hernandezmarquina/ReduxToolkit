@@ -1,5 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Header from '../components/Header';
 import {IProduct} from '../store/reducers/shoppingcartReducer';
 import ProductView from '../components/ProductView';
@@ -34,16 +40,18 @@ const ProductsScreen = () => {
   return (
     <View style={styles.container}>
       <Header displayCart title={'Productos'} />
-      {products.map(item => (
-        <View key={item.id} style={styles.item}>
-          <ProductView {...item} />
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => dispatch(addProduct(item))}>
-            <Text style={styles.buttonText}>Agregar al carrito</Text>
-          </TouchableOpacity>
-        </View>
-      ))}
+      <ScrollView style={{flex: 1}}>
+        {products.map(item => (
+          <View key={item.id} style={styles.item}>
+            <ProductView {...item} />
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => dispatch(addProduct(item))}>
+              <Text style={styles.buttonText}>Agregar al carrito</Text>
+            </TouchableOpacity>
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 };

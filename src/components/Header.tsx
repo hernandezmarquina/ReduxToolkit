@@ -7,6 +7,7 @@ import {useAppSelector} from '../store';
 interface IHeaderProps {
   title: string;
   displayCart?: boolean;
+  displayBackButton?: boolean;
 }
 
 const Header = (props: IHeaderProps) => {
@@ -14,7 +15,7 @@ const Header = (props: IHeaderProps) => {
   const useSelector = useAppSelector(state => state.shoppingcart);
   return (
     <View style={styles.container}>
-      {navigation.canGoBack() && (
+      {props.displayBackButton && (
         <TouchableOpacity
           onPress={() => {
             navigation.goBack();
@@ -27,20 +28,22 @@ const Header = (props: IHeaderProps) => {
       )}
       <Text style={styles.title}>{props.title}</Text>
       {props.displayCart && (
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate(SHOPPING_CART_SCREEN);
-          }}>
-          <Image
-            style={styles.button}
-            source={require('../../assets/ic_shopping_cart.png')}
-          />
-        </TouchableOpacity>
-      )}
-      {useSelector.totalProductos > 0 && (
-        <View style={styles.badge}>
-          <Text style={styles.badgeText}>{useSelector.totalProductos}</Text>
-        </View>
+        <>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate(SHOPPING_CART_SCREEN);
+            }}>
+            <Image
+              style={styles.button}
+              source={require('../../assets/ic_shopping_cart.png')}
+            />
+          </TouchableOpacity>
+          {useSelector.totalProductos > 0 && (
+            <View style={styles.badge}>
+              <Text style={styles.badgeText}>{useSelector.totalProductos}</Text>
+            </View>
+          )}
+        </>
       )}
     </View>
   );

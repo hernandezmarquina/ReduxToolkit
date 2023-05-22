@@ -26,9 +26,7 @@ const appReducer = createReducer(initialState, builder => {
       state.totalProductos += 1;
     })
     .addCase(removeProduct, (state, action) => {
-      let products = [...state.products].filter(
-        item => item.id !== action.payload,
-      );
+      let products = [...state.products].filter((_, i) => i !== action.payload);
       state.products = products;
       state.totalProductos = products.length;
     });
