@@ -1,9 +1,12 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {addProduct, removeProduct} from '../actions/shoppingcartActions';
+import {ImageSourcePropType} from 'react-native';
 
 export interface IProduct {
   id: number;
   title: string;
+  price: string;
+  image: ImageSourcePropType;
 }
 
 interface IShoppingcartState {

@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {SHOPPING_CART_SCREEN} from '../screens';
-import {useAppDispatch, useAppSelector} from '../store';
+import {useAppSelector} from '../store';
 
 interface IHeaderProps {
   title: string;
@@ -39,7 +39,7 @@ const Header = (props: IHeaderProps) => {
       )}
       {useSelector.totalProductos > 0 && (
         <View style={styles.badge}>
-          <Text style={styles.badgeText}>1</Text>
+          <Text style={styles.badgeText}>{useSelector.totalProductos}</Text>
         </View>
       )}
     </View>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   badgeText: {
-    fontSize: 10,
+    fontSize: 8,
     color: 'white',
   },
 });
