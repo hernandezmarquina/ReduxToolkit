@@ -12,7 +12,7 @@ interface IHeaderProps {
 
 const Header = (props: IHeaderProps) => {
   const navigation = useNavigation();
-  const useSelector = useAppSelector(state => state.shoppingcart);
+  const selector = useAppSelector(state => state.shoppingcart);
   return (
     <View style={styles.container}>
       {props.displayBackButton && (
@@ -38,9 +38,9 @@ const Header = (props: IHeaderProps) => {
               source={require('../../assets/ic_shopping_cart.png')}
             />
           </TouchableOpacity>
-          {useSelector.totalProductos > 0 && (
+          {selector.totalProductos > 0 && (
             <View style={styles.badge}>
-              <Text style={styles.badgeText}>{useSelector.totalProductos}</Text>
+              <Text style={styles.badgeText}>{selector.totalProductos}</Text>
             </View>
           )}
         </>

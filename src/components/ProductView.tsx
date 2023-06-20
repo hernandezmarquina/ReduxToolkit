@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {IProduct} from '../store/reducers/shoppingcartReducer';
+import {IProduct} from '../store/actions/shoppingcartActions';
 
 const ProductView = (props: IProduct) => {
   return (

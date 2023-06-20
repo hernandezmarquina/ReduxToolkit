@@ -7,10 +7,9 @@ import {
   View,
 } from 'react-native';
 import Header from '../components/Header';
-import {IProduct} from '../store/reducers/shoppingcartReducer';
 import ProductView from '../components/ProductView';
+import {IProduct, addProduct} from '../store/actions/shoppingcartActions';
 import {useAppDispatch} from '../store';
-import {addProduct} from '../store/actions/shoppingcartActions';
 
 const products: IProduct[] = [
   {

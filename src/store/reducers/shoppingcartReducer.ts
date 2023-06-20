@@ -1,13 +1,9 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {addProduct, removeProduct} from '../actions/shoppingcartActions';
-import {ImageSourcePropType} from 'react-native';
-
-export interface IProduct {
-  id: number;
-  title: string;
-  price: string;
-  image: ImageSourcePropType;
-}
+import {
+  IProduct,
+  addProduct,
+  removeProduct,
+} from '../actions/shoppingcartActions';
 
 interface IShoppingcartState {
   products: IProduct[];
@@ -19,7 +15,7 @@ const initialState: IShoppingcartState = {
   totalProductos: 0,
 };
 
-const appReducer = createReducer(initialState, builder => {
+const shoppingCartReducer = createReducer(initialState, builder => {
   builder
     .addCase(addProduct, (state, action) => {
       state.products = [...state.products, action.payload];
@@ -32,4 +28,4 @@ const appReducer = createReducer(initialState, builder => {
     });
 });
 
-export default appReducer;
+export default shoppingCartReducer;
